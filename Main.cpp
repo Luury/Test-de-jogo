@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include <Gl/gl.h>          // Bibliotecas Necess·rias
+#include <Gl/gl.h>          // Bibliotecas Necess√°rias
 #include <SDL2/SDL_image.h>
 #include "string"
 
 
-// FunÁ„o Colis„o entre inimigo e o personagem
+// Fun√ß√£o Colis√£o entre inimigo e o personagem
 bool colisao (float Ax, float Ay, float Acomp, float Aalt, float Bx, float By, float Bcomp, float Balt){ 
 	if (Ay+Aalt < By) return false;
 	else if (Ay > By + Balt) return false;
@@ -14,7 +14,7 @@ bool colisao (float Ax, float Ay, float Acomp, float Aalt, float Bx, float By, f
 	return true;
 }
 
-// FunÁ„o Colis„o entre a espada e o Inimigo
+// Fun√ß√£o Colis√£o entre a espada e o Inimigo
 bool colisaoEspada (float Ax, float Ay, float Acomp, float Aalt, float Bx, float By, float Bx1, float By1, float Bx2, float By2, float Bx3, float By3){ 
     if (Ax > Bx3) return false;
     else if (Ay > By3) return false;
@@ -30,7 +30,7 @@ int main( int argc, char* args[] )
     SDL_Init(SDL_INIT_EVERYTHING);
     
     //Atributos de Cores
-    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8); // azul
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8); // Vermelho
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8); // Verde
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8); // Azul
     SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8); // Transparencia
@@ -42,13 +42,13 @@ int main( int argc, char* args[] )
     
     //Criando Janela                     
     SDL_Window* janela = SDL_CreateWindow ("A Link to the Vulture", //Nome da janela
-	300, 20,           // LocalizaÁ„o da abertura de janela na ·rea de trabalho
+	300, 20,           // Localiza√ß√£o da abertura de janela na √°rea de trabalho
 	800, 720,           // Tamanho da Janela
 	SDL_WINDOW_OPENGL); // Abrir em modo janela e contexto com OpenGL
 	SDL_GLContext contexto = SDL_GL_CreateContext(janela); // Contexto com OpenGL
 	
 	// Criando framerate
-	const int FPS = 144; // Vari·vel do contador de fps
+	const int FPS = 144; // Vari√°vel do contador de fps
     Uint64 start;
     
 	//Chamando imagens e criando superficies
@@ -261,16 +261,16 @@ int main( int argc, char* args[] )
 	// Criando Eventos
     SDL_Event Eventos;    
 	
-	// Vari·veis
+	// Vari√°veis
     bool moverx = false, moverx1 = false, movery = false, movery1 = false, personagemataque = false; // Movimento de forma
     float formax = 280, formay = 270, formax1 = 26, formay1 = 35; // Inicializando Valores X Y para o personagem
     float forma2x = 280, forma2y = 400, forma2x1 = 35, forma2y1 = 15; // Inicializando Valores X Y para o inimigo
     float espadax, espaday, espadax1, espaday1, espadax2, espaday2, espadax3, espaday3;  // Inicializando Valores X Y para a esparada
     float velocidade1 = 0.6, velocidade2 = 0.6; // Velocidade que se move o personagem
     float velocidadex = 0.03, velocidadey = 0.03; // Velocidade que se move a segunda forma
-    int con = 5; // V·riavel do contador de frames
+    int con = 5; // V√°riavel do contador de frames
     int vida = 5; // Vida do personagem
-    int score = 0; // PontuaÁ„o
+    int score = 0; // Pontua√ß√£o
     
     
     while (true)            // Loop do jogo
@@ -285,19 +285,19 @@ int main( int argc, char* args[] )
     		if(Eventos.key.keysym.sym == SDLK_ESCAPE){ //Fechar jogo com a tecla ESC
     		break;
 		}		
-			if(Eventos.key.keysym.sym == SDLK_RIGHT) {// Deixar o bot„o "seta direita" pressionado altera a vari·vel moverx
+			if(Eventos.key.keysym.sym == SDLK_RIGHT) {// Deixar o bot√£o "seta direita" pressionado altera a vari√°vel moverx
     		moverx = true;
         }
-        	if(Eventos.key.keysym.sym == SDLK_LEFT) {// Deixar o bot„o "seta esquerda" pressionado altera a vari·vel moverx1
+        	if(Eventos.key.keysym.sym == SDLK_LEFT) {// Deixar o bot√£o "seta esquerda" pressionado altera a vari√°vel moverx1
     		moverx1 = true;
         }
-        	if(Eventos.key.keysym.sym == SDLK_DOWN) {// Deixar o bot„o "seta para baixo" pressionado altera a vari·vel movery
+        	if(Eventos.key.keysym.sym == SDLK_DOWN) {// Deixar o bot√£o "seta para baixo" pressionado altera a vari√°vel movery
     		movery = true;
         }
-        	if(Eventos.key.keysym.sym == SDLK_UP) {// Deixar o bot„o "seta para cima" pressionado altera a vari·vel movery1
+        	if(Eventos.key.keysym.sym == SDLK_UP) {// Deixar o bot√£o "seta para cima" pressionado altera a vari√°vel movery1
     		movery1 = true;
         }
-            if(Eventos.key.keysym.sym == SDLK_SPACE) {// Deixar o bot„o "espaÁo" pressionado  altera a vari·vel personagemataque, e o personagem para de se mover
+            if(Eventos.key.keysym.sym == SDLK_SPACE) {// Deixar o bot√£o "espa√ßo" pressionado  altera a vari√°vel personagemataque, e o personagem para de se mover
     		personagemataque = true; 
     		moverx1 = false;
             moverx = false;
@@ -306,23 +306,23 @@ int main( int argc, char* args[] )
           }
 		}	
         else if(Eventos.type == SDL_KEYUP){
-            if(Eventos.key.keysym.sym == SDLK_RIGHT){ // Deixar o bot„o "seta direita" solta altera a vari·vel moverx
+            if(Eventos.key.keysym.sym == SDLK_RIGHT){ // Deixar o bot√£o "seta direita" solta altera a vari√°vel moverx
     		moverx = false;
     		AnimacaoPersonagem = personagemDireitatextura;
         }
-            if(Eventos.key.keysym.sym == SDLK_LEFT){ // Deixar o bot„o "seta esquerda" solta altera a vari·vel moverx
+            if(Eventos.key.keysym.sym == SDLK_LEFT){ // Deixar o bot√£o "seta esquerda" solta altera a vari√°vel moverx
     		moverx1 = false;
     		AnimacaoPersonagem = personagemEsquerdatextura;
         }
-            if(Eventos.key.keysym.sym == SDLK_DOWN) { // Deixar o bot„o "seta para baixo" solta altera a vari·vel movery
+            if(Eventos.key.keysym.sym == SDLK_DOWN) { // Deixar o bot√£o "seta para baixo" solta altera a vari√°vel movery
     		movery = false;
     		AnimacaoPersonagem = personagemtextura;
         }
-        	if(Eventos.key.keysym.sym == SDLK_UP) {// Deixar o bot„o "seta para cima" solta altera a vari·vel movery1
+        	if(Eventos.key.keysym.sym == SDLK_UP) {// Deixar o bot√£o "seta para cima" solta altera a vari√°vel movery1
     		movery1 = false;
     		AnimacaoPersonagem = personagemCostatextura;
         }
-            if(Eventos.key.keysym.sym == SDLK_SPACE) {// Deixar o bot„o "seta para cima" solta altera a vari·vel movery1
+            if(Eventos.key.keysym.sym == SDLK_SPACE) {// Deixar o bot√£o "seta para cima" solta altera a vari√°vel movery1
     		personagemataque = false;
          	    if(AnimacaoPersonagem == personagemAtaqueFrentetextura){
         	           AnimacaoPersonagem = personagemtextura;
@@ -330,7 +330,7 @@ int main( int argc, char* args[] )
 	       	     if(AnimacaoPersonagem == personagemAtaqueCostatextura  ){
         	           AnimacaoPersonagem = personagemCostatextura;
 		        }
-	    	     if(AnimacaoPersonagem == personagemAtaqueEsquerdatextura){  // Voltando a animaÁ„o original a depender da direÁ„o
+	    	     if(AnimacaoPersonagem == personagemAtaqueEsquerdatextura){  // Voltando a anima√ß√£o original a depender da dire√ß√£o
         	          AnimacaoPersonagem = personagemEsquerdatextura;
 	         	}
 		         if(AnimacaoPersonagem == personagemAtaqueDireitatextura){
@@ -386,7 +386,7 @@ int main( int argc, char* args[] )
 	else if (forma2x + forma2x1 > 599){
 		velocidadex = -velocidadex;
 	}
-	if (forma2y < 1){                           // N„o deixar sair inimigo de dentro da "tela"
+	if (forma2y < 1){                           // N√£o deixar sair inimigo de dentro da "tela"
 		velocidadey = -velocidadey;
 	}
 	else if (forma2y + forma2x1 > 549) {
@@ -399,7 +399,7 @@ int main( int argc, char* args[] )
 	else if (formax + formax1 > 599){
 		moverx = false;
 	}
-	if (formay < 1){                           // N„o deixar o personagem sair de dentro da "tela"
+	if (formay < 1){                           // N√£o deixar o personagem sair de dentro da "tela"
 		movery1 = false;
 	}
 	else if (formay + formax1 > 541) {
@@ -407,7 +407,7 @@ int main( int argc, char* args[] )
 	}
 		  
 	// Mover Personagem
-    if(moverx == true){    // Se a vari·vel moverx for verdadeira
+    if(moverx == true){    // Se a vari√°vel moverx for verdadeira
     formax += velocidade1 ; // Somar Formax + a velocidade escrita em pixels
                 if (con < 30) {
           	    AnimacaoPersonagem = personagemDireitaWalk1textura;
@@ -416,7 +416,7 @@ int main( int argc, char* args[] )
           	    AnimacaoPersonagem = personagemDireitaWalk2textura;
 		  }
 	   }
-    if(moverx1 == true){   // Se a vari·vel mover1 for verdadeira
+    if(moverx1 == true){   // Se a vari√°vel mover1 for verdadeira
     formax -= velocidade1 ; // Somar Formax - a velocidade escrita em pixels
                 if (con < 30) {
           	    AnimacaoPersonagem = personagemEsquerdaWalk1textura;
@@ -425,7 +425,7 @@ int main( int argc, char* args[] )
           	    AnimacaoPersonagem = personagemEsquerdaWalk2textura;
 		  }
 	   }
-	if(movery == true){    // Se a vari·vel movery for verdadeira
+	if(movery == true){    // Se a vari√°vel movery for verdadeira
     formay += velocidade2 ; // Somar Formay + a velocidade escrita em pixels
                 if (con < 30) {
           	    AnimacaoPersonagem = personagemWalk1textura;
@@ -434,7 +434,7 @@ int main( int argc, char* args[] )
           	    AnimacaoPersonagem = personagemWalk2textura;
 		  }
 	   }
-	if(movery1 == true){   // Se a vari·vel movery1 for verdadeira
+	if(movery1 == true){   // Se a vari√°vel movery1 for verdadeira
     formay -= velocidade2 ; // Somar Formay - a velocidade escrita em pixels
                 if (con < 30) {
           	    AnimacaoPersonagem = personagemCostaWalk1textura;
@@ -445,7 +445,7 @@ int main( int argc, char* args[] )
 	   }
 	   
 	//Atacar com o Personagem
-	if(personagemataque == true){   // Se o personagem estiver atacando, a espada e a textura vai mudar a depender da direÁ„o
+	if(personagemataque == true){   // Se o personagem estiver atacando, a espada e a textura vai mudar a depender da dire√ß√£o
         if(AnimacaoPersonagem == personagemtextura || AnimacaoPersonagem == personagemWalk2textura || AnimacaoPersonagem == personagemWalk1textura ){
         	 AnimacaoPersonagem = personagemAtaqueFrentetextura;
         	 espadax = formax + 20; espaday = formay + 34;
@@ -476,33 +476,33 @@ int main( int argc, char* args[] )
 		}
     	moverx1 = false;
         moverx = false;
-		movery1 = false; // Enquanto ataca o personagem n„o pode se mover
+		movery1 = false; // Enquanto ataca o personagem n√£o pode se mover
         movery = false;
 	   }
 	   
 	   
-	//Mover o inimigo aleatÛriamente
+	//Mover o inimigo aleat√≥riamente
 	int random;   
     random = rand() % 150; // Vai sortear um numero em todo loop entre 0 e 150
     
     forma2x += velocidadex; // Inicializando as velocidades positivas
     forma2y += velocidadey;
     
-    if (random == 25){ // se o numero sorteado for 25 a velocidadex ser· negativa
+    if (random == 25){ // se o numero sorteado for 25 a velocidadex ser√° negativa
 	velocidadex = -velocidadex;
 	}
-    else if (random == 50){ // se o numero sorteado for 50 a velocidadey ser· negativa
+    else if (random == 50){ // se o numero sorteado for 50 a velocidadey ser√° negativa
     velocidadey = -velocidadey;
 	}
-	else if (random == 75){ // se o numero sorteado for 75 a velocidadex ser· positiva
+	else if (random == 75){ // se o numero sorteado for 75 a velocidadex ser√° positiva
 	velocidadex = -(-velocidadex);
 	}
-    else if (random == 100){ // se o numero sorteado for 100 a velocidadey ser· positiva
+    else if (random == 100){ // se o numero sorteado for 100 a velocidadey ser√° positiva
     velocidadey = -(-velocidadey);
 	}
 	
 	
-		//AnimaÁ„o do Inimigo
+		//Anima√ß√£o do Inimigo
 	            if (con < 20) {
           	    inimigotextura = inimigoIdle1textura;
 		  }
@@ -514,15 +514,15 @@ int main( int argc, char* args[] )
 		  }
 		
 		
-	//Colis„o do inimigo com o personagem
-	if (colisao(forma2x, forma2y, forma2x1, forma2y1, formax, formay, formax1, formay1) == true){ // Chamando a funÁ„o da colis„o
+	//Colis√£o do inimigo com o personagem
+	if (colisao(forma2x, forma2y, forma2x1, forma2y1, formax, formay, formax1, formay1) == true){ // Chamando a fun√ß√£o da colis√£o
 		if (velocidadex == -(-velocidadex)){
 			velocidadex = -velocidadex;
 		}
 		if (velocidadex == -velocidadex){
 		velocidadex = -(-velocidadex);
 		}
-		if (velocidadey == -(-velocidadey)){ // Se acontecer uma colis„o o inimigo vai ser repelido
+		if (velocidadey == -(-velocidadey)){ // Se acontecer uma colis√£o o inimigo vai ser repelido
 			velocidadey = -velocidadey;
 		}
 		if (velocidadey == -velocidadey){
@@ -530,14 +530,14 @@ int main( int argc, char* args[] )
 		}
 		int posicaoAleatoria;   
 		posicaoAleatoria = rand() % 450; // Sorteando um numero entre 0 e 450
-		forma2x = 35 + posicaoAleatoria, forma2y = 2 + posicaoAleatoria, forma2x1 = 35, forma2y1 = 15; // Inicializando o inimigo em outra posiÁ„o aleatÛria a depender do numero sorteado
+		forma2x = 35 + posicaoAleatoria, forma2y = 2 + posicaoAleatoria, forma2x1 = 35, forma2y1 = 15; // Inicializando o inimigo em outra posi√ß√£o aleat√≥ria a depender do numero sorteado
 		AnimacaoPersonagem = personagemTontotextura; // Muda a textura pro personagem tonto
-		Sleep(1000);                                // Pausa o jogo por um segundo na hora da colis„o
+		Sleep(1000);                                // Pausa o jogo por um segundo na hora da colis√£o
 		AnimacaoPersonagem = personagemtextura;     //  Muda a textura pro personagem normal
 		vida = vida - 1;                            // Retira 1 da vida
 	}	
 	
-	//Colis„o do inimigo com a espada
+	//Colis√£o do inimigo com a espada
 	if (colisaoEspada(forma2x, forma2y, forma2x1, forma2y1, espadax, espaday, espadax1, espaday1, espadax2, espaday2, espadax3, espaday3) == true){
 		
 		if (velocidadex == -(-velocidadex)){
@@ -546,7 +546,7 @@ int main( int argc, char* args[] )
 		if (velocidadex == -velocidadex){
 		velocidadex = -(-velocidadex);
 		}
-		if (velocidadey == -(-velocidadey)){ // Se acontecer uma colis„o o inimigo vai ser repelido
+		if (velocidadey == -(-velocidadey)){ // Se acontecer uma colis√£o o inimigo vai ser repelido
 			velocidadey = -velocidadey;
 		}
 		if (velocidadey == -velocidadey){
@@ -555,7 +555,7 @@ int main( int argc, char* args[] )
 		
 		int posicaoAleatoria;
 		posicaoAleatoria = rand() % 450; // Sorteando um numero entre 0 e 450
-		forma2x = 35 + posicaoAleatoria, forma2y = 2 + posicaoAleatoria, forma2x1 = 35, forma2y1 = 15; // Inicializando o inimigo em outra posiÁ„o aleatÛria
+		forma2x = 35 + posicaoAleatoria, forma2y = 2 + posicaoAleatoria, forma2x1 = 35, forma2y1 = 15; // Inicializando o inimigo em outra posi√ß√£o aleat√≥ria
 		
 		float aumentoVelocidade = 0.03;
 		if (velocidadex > 0){
@@ -564,13 +564,13 @@ int main( int argc, char* args[] )
 		if (velocidadey > 0){
 			velocidadey = velocidadey + aumentoVelocidade;
 		}
-	    if (velocidadex < 0){                                  // Aumento de velocidade do inimigo a cada colis„o
+	    if (velocidadex < 0){                                  // Aumento de velocidade do inimigo a cada colis√£o
 			velocidadex = velocidadex - aumentoVelocidade;
 		}
 		if (velocidadey < 0){
 			velocidadey = velocidadey - aumentoVelocidade;
 		}
-		score = score + 1; // Soma a pontuaÁ„o +1 a cada acerto no inimigo
+		score = score + 1; // Soma a pontua√ß√£o +1 a cada acerto no inimigo
 	}
 	
 	
@@ -578,14 +578,14 @@ int main( int argc, char* args[] )
 	glPushMatrix(); // Abrir Matriz
 	
 	glOrtho( 0,  // Ponto Minimo do "x"
-	600,         // Ponto M·ximo do "x"
-	600,         // Ponto  M·ximo do "y"   	//EspecificaÁıes da matrix
-	0,           // Ponto MÌnimo do "y"
-	-1,          // Valor prÈ definido
-	1);          // Valor prÈ definido
+	600,         // Ponto M√°ximo do "x"
+	600,         // Ponto  M√°ximo do "y"   	//Especifica√ß√µes da matrix
+	0,           // Ponto M√≠nimo do "y"
+	-1,          // Valor pr√© definido
+	1);          // Valor pr√© definido
 	
 	
-	glBindTexture(GL_TEXTURE_2D, backgroundtextura); // Textura do ch„o
+	glBindTexture(GL_TEXTURE_2D, backgroundtextura); // Textura do ch√£o
 	glBegin(GL_QUADS);{ // background
 	
 	glTexCoord2f(0,0); glVertex2f(0,0); // Primeiro ponto
@@ -646,7 +646,7 @@ int main( int argc, char* args[] )
 	
 	glPopMatrix(); // Fecha a matriz
 	
-	SDL_GL_SwapWindow(janela);// AnimaÁ„o Buffer
+	SDL_GL_SwapWindow(janela);// Anima√ß√£o Buffer
 	glClear(GL_COLOR_BUFFER_BIT); // Limpa o Buffer	
 	}
   }
