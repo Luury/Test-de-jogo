@@ -30,7 +30,7 @@ int main( int argc, char* args[] )
     SDL_Init(SDL_INIT_EVERYTHING);
     
     //Atributos de Cores
-    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8); // Vermelho
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8); // azul
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8); // Verde
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8); // Azul
     SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8); // Transparencia
